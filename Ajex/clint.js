@@ -4,23 +4,23 @@ var second = selects[1];
 
 var xhr = new XMLHttpRequest();
 var data; 
+xhr.open('GET', 'rockbands.json');
+xhr.send();
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
         if (xhr.status >= 200 && xhr.status < 300) {
             data = JSON.parse(xhr.responseText);
             
-            for (var elem in data) {
+            for (var key in data) {
                 var hold = document.createElement("option");
-                hold.value = elem;
-                hold.textContent = elem; 
+                hold.value = key;
+                hold.textContent = key; 
                 first.appendChild(hold);
             }
         }
     }
 }
 
-xhr.open('GET', 'rockbands.json');
-xhr.send();
 
 first.addEventListener("change", function() {
     var selected = this.value;
