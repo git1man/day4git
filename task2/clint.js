@@ -1,11 +1,9 @@
 class Polygon {
-  constructor(name, ...borders) {
-    this.name = name;
-    this.borders = borders;
-
-    if (this.constructor === Polygon) {
-      throw new Error("the class Polygon is an abstract class");
+  constructor(name) {
+    if (new.target === Polygon) {
+      throw new Error("Polygon is an abstract class");
     }
+    this.name
   }
 
   area() {
@@ -19,7 +17,7 @@ class Polygon {
 
 class Circle extends Polygon {
   constructor(r) {
-    super("circle", r);
+    super("circle");
     this.r = r;
   }
 
@@ -34,7 +32,7 @@ class Circle extends Polygon {
 
 class Rect extends Polygon {
   constructor(w, h) {
-    super("rectangle", w, h);
+    super("rectangle");
     this.w = w;
     this.h = h;
   }
@@ -50,7 +48,7 @@ class Rect extends Polygon {
 
 class Square extends Polygon {
   constructor(side) {
-    super("square", side);
+    super("square");
     this.side = side;
   }
 
@@ -65,7 +63,7 @@ class Square extends Polygon {
 
 class Triangle extends Polygon {
   constructor(b, h, side2, side3) {
-    super("triangle", b, h, side2, side3);
+    super("triangle");
     this.base = b;
     this.height = h;
     this.side2 = side2;
@@ -81,10 +79,10 @@ class Triangle extends Polygon {
   }
 }
 
-var rect=new Rect(100, 150);
-var circle=new Circle(70);
-var triangle=new Triangle(80, 80, 100, 100);
-var square=new Square(100)
+var rect = new Rect(100, 150);
+var circle = new Circle(70);
+var triangle = new Triangle(80, 80, 100, 100);
+var square = new Square(100);
 
 console.log(rect.display());
 console.log(circle.display());
@@ -93,27 +91,24 @@ console.log(square.display());
 
 /**@type {HTMLCanvasElement} */
 
-var canvas=document.querySelector('canvas')
-var ctx=canvas.getContext('2d')
+var canvas = document.querySelector("canvas");
+var ctx = canvas.getContext("2d");
 
 ctx.beginPath();
-ctx.rect(50, 50, rect.borders[0], rect.borders[1]);
+ctx.rect(50, 50, rect.h, rect.w);
 ctx.stroke();
 
-
 ctx.beginPath();
-ctx.arc(250, 100, circle.borders[0], 0, Math.PI * 2);
+ctx.arc(250, 100, circle.r, 0, Math.PI * 2);
 ctx.stroke();
 
-
 ctx.beginPath();
-ctx.rect(400, 50, square.borders[0], square.borders[0]);
+ctx.rect(400, 50, square.side, square.side);
 ctx.stroke();
 
-
 ctx.beginPath();
-ctx.moveTo(150, 250);
-ctx.lineTo(150 + triangle.borders[0], 250);
-ctx.lineTo(150 + triangle.borders[2], 250 + triangle.borders[1]);
+ctx.moveTo(150, 250);  
+ctx.lineTo(150 + triangle.base, 250);  
+ctx.lineTo(150 + triangle.side2, 250 - triangle.height);  
 ctx.closePath();
 ctx.stroke();
