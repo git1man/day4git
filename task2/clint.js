@@ -1,7 +1,7 @@
 class Polygon {
   constructor(name, ...borders) {
     this.name = name;
-    this.dimensions = borders;
+    this.borders = borders;
 
     if (this.constructor === Polygon) {
       throw new Error("the class Polygon is an abstract class");
@@ -97,23 +97,23 @@ var canvas=document.querySelector('canvas')
 var ctx=canvas.getContext('2d')
 
 ctx.beginPath();
-ctx.rect(50, 50, rect.dimensions[0], rect.dimensions[1]);
+ctx.rect(50, 50, rect.borders[0], rect.borders[1]);
 ctx.stroke();
 
 
 ctx.beginPath();
-ctx.arc(250, 100, circle.dimensions[0], 0, Math.PI * 2);
+ctx.arc(250, 100, circle.borders[0], 0, Math.PI * 2);
 ctx.stroke();
 
 
 ctx.beginPath();
-ctx.rect(400, 50, square.dimensions[0], square.dimensions[0]);
+ctx.rect(400, 50, square.borders[0], square.borders[0]);
 ctx.stroke();
 
 
 ctx.beginPath();
 ctx.moveTo(150, 250);
-ctx.lineTo(150 + triangle.dimensions[0], 250);
-ctx.lineTo(150 + triangle.dimensions[2], 250 + triangle.dimensions[1]);
+ctx.lineTo(150 + triangle.borders[0], 250);
+ctx.lineTo(150 + triangle.borders[2], 250 + triangle.borders[1]);
 ctx.closePath();
 ctx.stroke();
