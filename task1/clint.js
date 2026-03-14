@@ -4,7 +4,7 @@ var validator = {
   set: function (target, prop, value) {
     switch (prop) {
       case "name":
-        if (typeof prop != "string") {
+        if (typeof value != "string") {
           throw new Error("the value must be string");
         }
         if (value.length != 7) {
@@ -22,7 +22,7 @@ var validator = {
         if (isNaN(value)) {
           throw new Error("value must be a number");
         }
-        if (prop <= 60 && prop >= 25) {
+        if (value >= 60 || value <= 25) {
           throw new Error("the age must be larger then 25 and smaller tehn 60");
         }
         break;
@@ -35,7 +35,7 @@ var validator = {
 };
 
 var obj=new Proxy(hold,validator)
-obj.age=50
+obj.age=55
 obj.name="hassans"
 obj.address="fasil"
 // obj.whatever="whatEverData"
