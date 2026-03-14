@@ -13,7 +13,7 @@ var validator = {
         break;
 
       case "address":
-        if (typeof prop != "string") {
+        if (typeof value != "string") {
           throw new Error("the value must be a string");
         }
         break;
