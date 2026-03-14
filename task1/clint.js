@@ -19,7 +19,7 @@ var validator = {
         break;
 
       case "age":
-        if (!isNaN(prop)) {
+        if (isNaN(value)) {
           throw new Error("value must be a number");
         }
         if (prop <= 60 && prop >= 25) {
@@ -35,7 +35,7 @@ var validator = {
 };
 
 var obj=new Proxy(hold,validator)
-obj.age=25
+obj.age=50
 obj.name="hassans"
 obj.address="fasil"
 // obj.whatever="whatEverData"
