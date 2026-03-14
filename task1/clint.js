@@ -13,7 +13,7 @@ var validator = {
         break;
 
       case "address":
-        if (!isNaN(prop)) {
+        if (typeof prop != "string") {
           throw new Error("the value must be a string");
         }
         break;
