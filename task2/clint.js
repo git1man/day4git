@@ -1,9 +1,9 @@
 class Polygon {
   constructor(name) {
-    if (new.target === Polygon) {
+    if (this.constructor === Polygon) {
       throw new Error("Polygon is an abstract class");
     }
-    this.name
+    this.name=name
   }
 
   area() {
@@ -83,6 +83,7 @@ var rect = new Rect(100, 150);
 var circle = new Circle(70);
 var triangle = new Triangle(80, 80, 100, 100);
 var square = new Square(100);
+// var polygin=new Polygon("poly")
 
 console.log(rect.display());
 console.log(circle.display());
